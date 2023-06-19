@@ -1,6 +1,6 @@
 <?php
 
-namespace Tda\LaravelNetcup;
+namespace Tda\LaravelGoogleAnalyticsAdmin;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -8,7 +8,7 @@ class GoogleAnalyticsAdminServiceProvider extends ServiceProvider
 {
     public function registeringPackage()
     {
-        $this->app->alias(Netcup::class, 'laravel-google-analytics-admin');
+        $this->app->alias(GoogleAnalyticsAdmin::class, 'laravel-google-analytics-admin');
 
     }
 }
