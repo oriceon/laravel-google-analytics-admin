@@ -6,7 +6,7 @@ use Tda\LaravelGoogleAnalyticsAdmin\Client\V1Beta\Client;
 use Tda\LaravelGoogleAnalyticsAdmin\Traits\Accounts;
 use Tda\LaravelGoogleAnalyticsAdmin\Traits\Properties;
 
-class AnalyticsAdmin
+class GoogleAnalyticsAdmin
 {
     use Accounts, Properties;
 
