@@ -32,7 +32,6 @@ class Client
 
     public function request(string $method, string $endpoint, ?array $params = null, ?object $body = null)
     {
-        dd($method, $endpoint, $params, $body);
         $endpoint = self::SERVICE_ADDRESS.$endpoint;
         $http = Http::withToken($this->token)->accept('application/json');
         if($body) {
