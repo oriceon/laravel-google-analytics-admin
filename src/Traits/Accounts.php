@@ -1,9 +1,6 @@
 <?php
 
-namespace Tda\LaravelGoogleAnalyticsAdmin\Trait;
-
-use Tda\LaravelGoogleAnalyticsAdmin\AnalyticsAccount;
-
+namespace Tda\LaravelGoogleAnalyticsAdmin\Traits;
 
 trait Accounts
 {

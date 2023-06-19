@@ -1,6 +1,6 @@
 <?php
 
-namespace Tda\LaravelGoogleAnalyticsAdmin\Trait;
+namespace Tda\LaravelGoogleAnalyticsAdmin\Traits;
 
 
 trait Properties

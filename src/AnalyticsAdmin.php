@@ -2,9 +2,9 @@
 
 namespace Tda\LaravelGoogleAnalyticsAdmin;
 
-use  Tda\LaravelGoogleAnalyticsAdmin\Client\V1Beta\Client;
-use Tda\LaravelGoogleAnalyticsAdmin\Trait\Accounts;
-use Tda\LaravelGoogleAnalyticsAdmin\Trait\Properties;
+use Tda\LaravelGoogleAnalyticsAdmin\Client\V1Beta\Client;
+use Tda\LaravelGoogleAnalyticsAdmin\Traits\Accounts;
+use Tda\LaravelGoogleAnalyticsAdmin\Traits\Properties;
 
 class AnalyticsAdmin
 {
