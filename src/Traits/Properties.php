@@ -35,7 +35,7 @@ trait Properties
     public function getProperty(string $property)
     {
         $this->service('GetProperty')
-            ->setTemplate($property);
+            ->setUri($property);
 
         return $this->call();
     }
@@ -48,7 +48,7 @@ trait Properties
         $queryParams = implode(',', array_keys($params));
 
         $this->service('UpdateProperty')
-            ->setTemplate($property)
+            ->setUri($property)
             ->queryParams([$queryParams])
             ->queryBody($params);
 
@@ -61,7 +61,7 @@ trait Properties
     public function deleteProperty(string $property)
     {
         $this->service('DeleteProperty');
-        $this->setTemplate($property);
+        $this->setUri($property);
 
         return $this->call();
     }
@@ -72,7 +72,7 @@ trait Properties
     public function runPropertiesAccessReport(string $property, array $dateRange)
     {
         $accessDateRange = json_encode($dateRange);
-        $this->service('RunAccessReport')->setTemplate($property);
+        $this->service('RunAccessReport')->setUri($property);
         $this->queryParams($dateRange);
 
         return $this->call();
@@ -83,7 +83,7 @@ trait Properties
     */
     public function getDataRetentionSettings(string $property)
     {
-        $this->service('GetDataRetentionSettings')->setTemplate($property);
+        $this->service('GetDataRetentionSettings')->setUri($property);
 
         return $this->call();
     }
@@ -96,7 +96,7 @@ trait Properties
         $queryParams = implode(',', array_keys($params));
 
         $this->service('UpdateDataRetentionSettings')
-            ->setTemplate($property)
+            ->setUri($property)
             ->queryParams([$queryParams])
             ->queryBody($params);
 
@@ -108,7 +108,7 @@ trait Properties
     */
     public function acknowledgeUserDataCollection(string $property)
     {
-        $this->service('UpdateDataRetentionSettings')->setTemplate($property);
+        $this->service('UpdateDataRetentionSettings')->setUri($property);
 
         return $this->call();
     }

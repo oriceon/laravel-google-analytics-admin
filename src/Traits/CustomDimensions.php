@@ -13,7 +13,7 @@ trait CustomDimensions
     public function listCustomDimensions(string $property)
     {
         $this->service('ListCustomDimensions')
-            ->setTemplate($property);
+            ->setUri($property);
 
         return $this->call();
     }
@@ -24,7 +24,7 @@ trait CustomDimensions
     public function createCustomDimension(string $property, array $params)
     {
         $this->service('CreateCustomDimension')
-            ->setTemplate($property)
+            ->setUri($property)
             ->queryBody($params);
 
         return $this->call();
@@ -36,7 +36,7 @@ trait CustomDimensions
     public function getCustomDimension(string $dimension)
     {
         $this->service('GetCustomDimension')
-            ->setTemplate($dimension);
+            ->setUri($dimension);
 
         return $this->call();
     }
@@ -49,7 +49,7 @@ trait CustomDimensions
         $queryParams = implode(',', array_keys($params));
 
         $this->service('UpdateCustomDimension')
-            ->setTemplate($dimension)
+            ->setUri($dimension)
             ->queryParams([$queryParams])
             ->queryBody($params);
 
@@ -62,7 +62,7 @@ trait CustomDimensions
     public function archiveCustomDimension(string $dimension)
     {
         $this->service('ArchiveCustomDimension');
-        $this->setTemplate($dimension);
+        $this->setUri($dimension);
 
         return $this->call();
     }

@@ -13,7 +13,7 @@ trait CustomMetrics
     public function listCustomMetrics(string $property)
     {
         $this->service('ListCustomMetrics')
-            ->setTemplate($property);
+            ->setUri($property);
 
         return $this->call();
     }
@@ -24,7 +24,7 @@ trait CustomMetrics
     public function createCustomMetric(string $property, array $params)
     {
         $this->service('CreateCustomMetric')
-            ->setTemplate($property)
+            ->setUri($property)
             ->queryBody($params);
 
         return $this->call();
@@ -36,7 +36,7 @@ trait CustomMetrics
     public function getCustomMetric(string $property)
     {
         $this->service('GetCustomMetric')
-            ->setTemplate($property);
+            ->setUri($property);
 
         return $this->call();
     }
@@ -49,7 +49,7 @@ trait CustomMetrics
         $queryParams = implode(',', array_keys($params));
 
         $this->service('UpdateCustomMetric')
-            ->setTemplate($metric)
+            ->setUri($metric)
             ->queryParams([$queryParams])
             ->queryBody($params);
 
@@ -62,7 +62,7 @@ trait CustomMetrics
     public function archiveCustomMetric(string $property)
     {
         $this->service('ArchiveCustomMetric');
-        $this->setTemplate($property);
+        $this->setUri($property);
 
         return $this->call();
     }

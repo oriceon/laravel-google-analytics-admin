@@ -34,7 +34,7 @@ class Client
     public function request(string $method, string $endpoint, ?array $params = null, ?string $body = null)
     {
         $endpoint = self::SCHEME . self::SERVICE_ADDRESS . $endpoint;
-        print ($method . ': ' . $endpoint . '<br>');
+
         $http = Http::withToken($this->token)->accept('application/json');
         if($body) {
             $endpoint .= (isset($params) ? '?' . http_build_query($params) : '');

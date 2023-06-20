@@ -52,7 +52,7 @@ class GoogleAnalyticsAdmin
         return $this;
     }
 
-    protected function setTemplate($template)
+    protected function setUri($template)
     {
         $this->interface['uriTemplate'] = preg_replace('/(\{.*\})/', $template, $this->interface['uriTemplate']);
         return $this;

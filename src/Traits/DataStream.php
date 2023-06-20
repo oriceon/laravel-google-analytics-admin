@@ -13,7 +13,7 @@ trait DataStream
     public function listDataStream(string $property)
     {
         $this->service('ListDataStreams')
-            ->setTemplate($property);
+            ->setUri($property);
 
         return $this->call();
     }
@@ -24,7 +24,7 @@ trait DataStream
     public function createDataStream(string $property, array $params)
     {
         $this->service('CreateDataStream')
-            ->setTemplate($property)
+            ->setUri($property)
             ->queryBody($params);
 
         return $this->call();
@@ -36,7 +36,7 @@ trait DataStream
     public function getDataStream(string $dataStream)
     {
         $this->service('GetDataStream')
-            ->setTemplate($dataStream);
+            ->setUri($dataStream);
 
         return $this->call();
     }
@@ -49,7 +49,7 @@ trait DataStream
         $queryParams = implode(',', array_keys($params));
 
         $this->service('UpdateDataStream')
-            ->setTemplate($dataStream)
+            ->setUri($dataStream)
             ->queryParams([$queryParams])
             ->queryBody($params);
 
@@ -62,7 +62,7 @@ trait DataStream
     public function DeleteDataStream(string $dataStream)
     {
         $this->service('DeleteDataStream');
-        $this->setTemplate($dataStream);
+        $this->setUri($dataStream);
 
         return $this->call();
     }

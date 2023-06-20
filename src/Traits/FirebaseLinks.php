@@ -13,7 +13,7 @@ trait FirebaseLinks
     public function listFirebaseLinks(string $property)
     {
         $this->service('ListFirebaseLinks')
-            ->setTemplate($property);
+            ->setUri($property);
 
         return $this->call();
     }
@@ -24,7 +24,7 @@ trait FirebaseLinks
     public function createFirebaseLink(string $property, array $params)
     {
         $this->service('CreateFirebaseLink')
-            ->setTemplate($property)
+            ->setUri($property)
             ->queryBody($params);
 
         return $this->call();
@@ -36,7 +36,7 @@ trait FirebaseLinks
     public function deleteFirebaseLink(string $firebaseLink)
     {
         $this->service('DeleteFirebaseLink');
-        $this->setTemplate($firebaseLink);
+        $this->setUri($firebaseLink);
 
         return $this->call();
     }

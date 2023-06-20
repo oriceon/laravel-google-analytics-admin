@@ -13,7 +13,7 @@ trait GoogleAdsLinks
     public function listGoogleAdsLinks(string $property)
     {
         $this->service('ListGoogleAdsLinks')
-            ->setTemplate($property);
+            ->setUri($property);
 
         return $this->call();
     }
@@ -24,7 +24,7 @@ trait GoogleAdsLinks
     public function createGoogleAdsLink(string $property, array $params)
     {
         $this->service('CreateGoogleAdsLink')
-            ->setTemplate($property)
+            ->setUri($property)
             ->queryBody($params);
 
         return $this->call();
@@ -38,7 +38,7 @@ trait GoogleAdsLinks
         $queryParams = implode(',', array_keys($params));
 
         $this->service('UpdateGoogleAdsLink')
-            ->setTemplate($googleAdsLink)
+            ->setUri($googleAdsLink)
             ->queryParams([$queryParams])
             ->queryBody($params);
 
@@ -51,7 +51,7 @@ trait GoogleAdsLinks
     public function deleteGoogleAdsLink(string $googleAdsLink)
     {
         $this->service('DeleteGoogleAdsLink');
-        $this->setTemplate($googleAdsLink);
+        $this->setUri($googleAdsLink);
 
         return $this->call();
     }

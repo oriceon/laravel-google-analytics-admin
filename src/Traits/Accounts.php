@@ -40,7 +40,7 @@ trait Accounts
     */
     public function getAccount(string $account): object
     {
-        $this->service('GetAccount')->setTemplate($account);
+        $this->service('GetAccount')->setUri($account);
 
         return $this->call();
     }
@@ -53,7 +53,7 @@ trait Accounts
         $queryParams = implode(',', array_keys($params));
 
         $this->service('UpdateAccount')
-            ->setTemplate($account)
+            ->setUri($account)
             ->queryParams([$queryParams])
             ->queryBody($params);
 
@@ -65,7 +65,7 @@ trait Accounts
     */
     public function deleteAccount(string $account)
     {
-        $this->service('DeleteAccount')->setTemplate($account);
+        $this->service('DeleteAccount')->setUri($account);
 
         return $this->call();
     }
@@ -75,7 +75,7 @@ trait Accounts
     */
     public function getDataSharingSettings(string $account)
     {
-        $this->service('GetDataSharingSettings')->setTemplate($account . '/dataSharingSettings');
+        $this->service('GetDataSharingSettings')->setUri($account . '/dataSharingSettings');
 
         return $this->call();
     }
@@ -86,7 +86,7 @@ trait Accounts
     public function runAccountsAccessReport(string $account, array $dateRange)
     {
         $accessDateRange = json_encode($dateRange);
-        $this->service('RunAccessReport')->setTemplate($account);
+        $this->service('RunAccessReport')->setUri($account);
         $this->queryParams($dateRange);
 
         return $this->call();
@@ -97,7 +97,7 @@ trait Accounts
     */
     public function searchChangeHistoryEvents(string $account)
     {
-        $this->service('SearchChangeHistoryEvents')->setTemplate($account);
+        $this->service('SearchChangeHistoryEvents')->setUri($account);
 
         return $this->call();
     }

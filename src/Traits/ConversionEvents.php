@@ -13,7 +13,7 @@ trait ConversionEvents
     public function listConversionEvents(string $property)
     {
         $this->service('ListConversionEvents')
-            ->setTemplate($property);
+            ->setUri($property);
 
         return $this->call();
     }
@@ -24,7 +24,7 @@ trait ConversionEvents
     public function createConversionEvent(string $property, array $params)
     {
         $this->service('CreateConversionEvent')
-            ->setTemplate($property)
+            ->setUri($property)
             ->queryBody($params);
 
         return $this->call();
@@ -36,7 +36,7 @@ trait ConversionEvents
     public function getConversionEvent(string $property)
     {
         $this->service('GetConversionEvent')
-            ->setTemplate($property);
+            ->setUri($property);
 
         return $this->call();
     }
@@ -47,7 +47,7 @@ trait ConversionEvents
     public function deleteConversionEvent(string $property)
     {
         $this->service('DeleteConversionEvent');
-        $this->setTemplate($property);
+        $this->setUri($property);
 
         return $this->call();
     }

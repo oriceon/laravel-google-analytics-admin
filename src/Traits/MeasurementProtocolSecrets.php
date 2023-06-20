@@ -13,7 +13,7 @@ trait MeasurementProtocolSecrets
     public function listMeasurementProtocolSecrets(string $dataStream)
     {
         $this->service('ListMeasurementProtocolSecrets')
-            ->setTemplate($dataStream);
+            ->setUri($dataStream);
 
         return $this->call();
     }
@@ -24,7 +24,7 @@ trait MeasurementProtocolSecrets
     public function createMeasurementProtocolSecret(string $dataStream, array $params)
     {
         $this->service('CreateMeasurementProtocolSecret')
-            ->setTemplate($dataStream)
+            ->setUri($dataStream)
             ->queryBody($params);
 
         return $this->call();
@@ -36,7 +36,7 @@ trait MeasurementProtocolSecrets
     public function getMeasurementProtocolSecret(string $measurementProtocolSecret)
     {
         $this->service('GetMeasurementProtocolSecret')
-            ->setTemplate($measurementProtocolSecret);
+            ->setUri($measurementProtocolSecret);
 
         return $this->call();
     }
@@ -49,7 +49,7 @@ trait MeasurementProtocolSecrets
         $queryParams = implode(',', array_keys($params));
 
         $this->service('UpdateMeasurementProtocolSecret')
-            ->setTemplate($measurementProtocolSecret)
+            ->setUri($measurementProtocolSecret)
             ->queryParams([$queryParams])
             ->queryBody($params);
 
@@ -62,7 +62,7 @@ trait MeasurementProtocolSecrets
     public function deleteMeasurementProtocolSecret(string $measurementProtocolSecret)
     {
         $this->service('DeleteMeasurementProtocolSecret');
-        $this->setTemplate($measurementProtocolSecret);
+        $this->setUri($measurementProtocolSecret);
 
         return $this->call();
     }
