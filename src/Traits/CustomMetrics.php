@@ -10,7 +10,7 @@ trait CustomMetrics
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.customMetrics/list
     */
-    public function listCustomMetrics(string $property)
+    public function listCustomMetrics(string $property): object
     {
         $this->service('ListCustomMetrics')
             ->setUri($property);
@@ -21,7 +21,7 @@ trait CustomMetrics
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.customMetrics/create
     */
-    public function createCustomMetric(string $property, array $params)
+    public function createCustomMetric(string $property, array $params): object
     {
         $this->service('CreateCustomMetric')
             ->setUri($property)
@@ -33,7 +33,7 @@ trait CustomMetrics
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.customMetrics/get
     */
-    public function getCustomMetric(string $property)
+    public function getCustomMetric(string $property): object
     {
         $this->service('GetCustomMetric')
             ->setUri($property);
@@ -44,7 +44,7 @@ trait CustomMetrics
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.customMetrics/patch
     */
-    public function updateCustomMetric(string $metric, array $params)
+    public function updateCustomMetric(string $metric, array $params): object
     {
         $queryParams = implode(',', array_keys($params));
 
@@ -65,6 +65,12 @@ trait CustomMetrics
         $this->setUri($property);
 
         return $this->call();
+    }
+
+    public function getCustomMetricsResource()
+    {
+        $propertiesResource = include(__DIR__ . '/../resources/analytics_admin_custom_metrics.php');
+        return $propertiesResource;
     }
 
 }

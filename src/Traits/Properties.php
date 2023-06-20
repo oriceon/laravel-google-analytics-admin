@@ -10,7 +10,7 @@ trait Properties
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties/list
     */
-    public function listProperties(string $account)
+    public function listProperties(string $account): object
     {
         $this->service('ListProperties')
             ->queryParams(['parent:'.$account]);
@@ -21,7 +21,7 @@ trait Properties
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties/create
     */
-    public function createProperty(array $params)
+    public function createProperty(array $params): object
     {
         $this->service('CreateProperty')
             ->queryBody($params);
@@ -32,7 +32,7 @@ trait Properties
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties/get
     */
-    public function getProperty(string $property)
+    public function getProperty(string $property): object
     {
         $this->service('GetProperty')
             ->setUri($property);
@@ -43,7 +43,7 @@ trait Properties
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties/patch
     */
-    public function updateProperty(string $property, array $params)
+    public function updateProperty(string $property, array $params): object
     {
         $queryParams = implode(',', array_keys($params));
 
@@ -81,7 +81,7 @@ trait Properties
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties/getDataRetentionSettings
     */
-    public function getDataRetentionSettings(string $property)
+    public function getDataRetentionSettings(string $property): object
     {
         $this->service('GetDataRetentionSettings')->setUri($property);
 
@@ -91,7 +91,7 @@ trait Properties
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties/updateDataRetentionSettings
     */
-    public function updateDataRetentionSettings(string $property, array $params)
+    public function updateDataRetentionSettings(string $property, array $params): object
     {
         $queryParams = implode(',', array_keys($params));
 
@@ -106,14 +106,14 @@ trait Properties
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties/acknowledgeUserDataCollection
     */
-    public function acknowledgeUserDataCollection(string $property)
+    public function acknowledgeUserDataCollection(string $property): object
     {
         $this->service('UpdateDataRetentionSettings')->setUri($property);
 
         return $this->call();
     }
 
-    public function getPropertyResource()
+    public function getPropertiesResource()
     {
         $propertiesResource = include(__DIR__ . '/../resources/analytics_admin_properties.php');
         return $propertiesResource;

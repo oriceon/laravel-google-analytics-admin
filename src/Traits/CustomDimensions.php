@@ -10,7 +10,7 @@ trait CustomDimensions
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.customDimensions/list
     */
-    public function listCustomDimensions(string $property)
+    public function listCustomDimensions(string $property): object
     {
         $this->service('ListCustomDimensions')
             ->setUri($property);
@@ -21,7 +21,7 @@ trait CustomDimensions
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.customDimensions/create
     */
-    public function createCustomDimension(string $property, array $params)
+    public function createCustomDimension(string $property, array $params): object
     {
         $this->service('CreateCustomDimension')
             ->setUri($property)
@@ -33,7 +33,7 @@ trait CustomDimensions
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.customDimensions/get
     */
-    public function getCustomDimension(string $dimension)
+    public function getCustomDimension(string $dimension): object
     {
         $this->service('GetCustomDimension')
             ->setUri($dimension);
@@ -44,7 +44,7 @@ trait CustomDimensions
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.customDimensions/patch
     */
-    public function updateCustomDimension(string $dimension, array $params)
+    public function updateCustomDimension(string $dimension, array $params): object
     {
         $queryParams = implode(',', array_keys($params));
 
@@ -65,6 +65,12 @@ trait CustomDimensions
         $this->setUri($dimension);
 
         return $this->call();
+    }
+
+    public function getCustomDimensionsResource()
+    {
+        $propertiesResource = include(__DIR__ . '/../resources/analytics_admin_custom_dimensions.php');
+        return $propertiesResource;
     }
 
 }

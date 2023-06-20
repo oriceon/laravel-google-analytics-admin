@@ -10,7 +10,7 @@ trait MeasurementProtocolSecrets
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.dataStreams.measurementProtocolSecrets/list
     */
-    public function listMeasurementProtocolSecrets(string $dataStream)
+    public function listMeasurementProtocolSecrets(string $dataStream): object
     {
         $this->service('ListMeasurementProtocolSecrets')
             ->setUri($dataStream);
@@ -21,7 +21,7 @@ trait MeasurementProtocolSecrets
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.dataStreams.measurementProtocolSecrets/create
     */
-    public function createMeasurementProtocolSecret(string $dataStream, array $params)
+    public function createMeasurementProtocolSecret(string $dataStream, array $params): object
     {
         $this->service('CreateMeasurementProtocolSecret')
             ->setUri($dataStream)
@@ -33,7 +33,7 @@ trait MeasurementProtocolSecrets
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.dataStreams.measurementProtocolSecrets/get
     */
-    public function getMeasurementProtocolSecret(string $measurementProtocolSecret)
+    public function getMeasurementProtocolSecret(string $measurementProtocolSecret): object
     {
         $this->service('GetMeasurementProtocolSecret')
             ->setUri($measurementProtocolSecret);
@@ -44,7 +44,7 @@ trait MeasurementProtocolSecrets
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.dataStreams.measurementProtocolSecrets/patch
     */
-    public function updateMeasurementProtocolSecret(string $measurementProtocolSecret, array $params)
+    public function updateMeasurementProtocolSecret(string $measurementProtocolSecret, array $params): object
     {
         $queryParams = implode(',', array_keys($params));
 

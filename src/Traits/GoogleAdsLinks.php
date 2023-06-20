@@ -10,7 +10,7 @@ trait GoogleAdsLinks
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.googleAdsLinks/list
     */
-    public function listGoogleAdsLinks(string $property)
+    public function listGoogleAdsLinks(string $property): object
     {
         $this->service('ListGoogleAdsLinks')
             ->setUri($property);
@@ -21,7 +21,7 @@ trait GoogleAdsLinks
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.googleAdsLinks/create
     */
-    public function createGoogleAdsLink(string $property, array $params)
+    public function createGoogleAdsLink(string $property, array $params): object
     {
         $this->service('CreateGoogleAdsLink')
             ->setUri($property)
@@ -33,7 +33,7 @@ trait GoogleAdsLinks
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.googleAdsLinks/patch
     */
-    public function updateGoogleAdsLink(string $googleAdsLink, array $params)
+    public function updateGoogleAdsLink(string $googleAdsLink, array $params): object
     {
         $queryParams = implode(',', array_keys($params));
 

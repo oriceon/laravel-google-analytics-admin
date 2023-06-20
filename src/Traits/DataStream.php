@@ -10,7 +10,7 @@ trait DataStream
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.dataStreams/list
     */
-    public function listDataStream(string $property)
+    public function listDataStream(string $property): object
     {
         $this->service('ListDataStreams')
             ->setUri($property);
@@ -21,7 +21,7 @@ trait DataStream
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.dataStreams/create
     */
-    public function createDataStream(string $property, array $params)
+    public function createDataStream(string $property, array $params): object
     {
         $this->service('CreateDataStream')
             ->setUri($property)
@@ -33,7 +33,7 @@ trait DataStream
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.dataStreams/get
     */
-    public function getDataStream(string $dataStream)
+    public function getDataStream(string $dataStream): object
     {
         $this->service('GetDataStream')
             ->setUri($dataStream);
@@ -44,7 +44,7 @@ trait DataStream
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.dataStreams/patch
     */
-    public function updateDataStream(string $dataStream, array $params)
+    public function updateDataStream(string $dataStream, array $params): object
     {
         $queryParams = implode(',', array_keys($params));
 
@@ -65,6 +65,12 @@ trait DataStream
         $this->setUri($dataStream);
 
         return $this->call();
+    }
+
+    public function getDataStreamResource()
+    {
+        $propertiesResource = include(__DIR__ . '/../resources/analytics_admin_data_stream.php');
+        return $propertiesResource;
     }
 
 }
