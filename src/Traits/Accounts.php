@@ -6,39 +6,53 @@ trait Accounts
 {
 
 
-    public function ListAccounts()
+    /*
+    * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/list
+    */
+    public function listAccounts(): object
     {
-        $this->interface('ListAccounts');
+        $this->service('ListAccounts');
 
         return $this->call();
     }
 
-    public function ListAccountSummaries()
+    /*
+    * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/get
+    */
+    public function listAccountSummaries(): object
     {
-        $this->interface('ListAccountSummaries');
-
-        return $this->call();
-
-    }
-
-    public function ProvisionAccountTicket()
-    {
-        $this->interface('ProvisionAccountTicket');
-        return $this->call();
-    }
-
-    public function GetAccount(string $account)
-    {
-        $this->interface('GetAccount')->setTemplate($account);
+        $this->service('ListAccountSummaries');
 
         return $this->call();
     }
 
-    public function UpdateAccount(string $account, array $params)
+    /*
+    * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/provisionAccountTicket
+    */
+    public function provisionAccountTicket(): string
+    {
+        $this->service('ProvisionAccountTicket');
+        return $this->call();
+    }
+
+    /*
+    * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/get
+    */
+    public function getAccount(string $account): object
+    {
+        $this->service('GetAccount')->setTemplate($account);
+
+        return $this->call();
+    }
+
+    /*
+    * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/patch
+    */
+    public function updateAccount(string $account, array $params): object
     {
         $queryParams = implode(',', array_keys($params));
 
-        $this->interface('UpdateAccount')
+        $this->service('UpdateAccount')
             ->setTemplate($account)
             ->queryParams([$queryParams])
             ->queryBody($params);
@@ -46,9 +60,44 @@ trait Accounts
         return $this->call();
     }
 
-    public function DeleteAccount(string $account)
+    /*
+    * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/delete
+    */
+    public function deleteAccount(string $account)
     {
-        $this->interface('DeleteAccount')->setTemplate($account);
+        $this->service('DeleteAccount')->setTemplate($account);
+
+        return $this->call();
+    }
+
+    /*
+    * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/getDataSharingSettings
+    */
+    public function getDataSharingSettings(string $account)
+    {
+        $this->service('GetDataSharingSettings')->setTemplate($account . '/dataSharingSettings');
+
+        return $this->call();
+    }
+
+    /*
+    * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/runAccessReport
+    */
+    public function runAccountsAccessReport(string $account, array $dateRange)
+    {
+        $accessDateRange = json_encode($dateRange);
+        $this->service('RunAccessReport')->setTemplate($account);
+        $this->queryParams($dateRange);
+
+        return $this->call();
+    }
+
+    /*
+    * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/searchChangeHistoryEvents
+    */
+    public function searchChangeHistoryEvents(string $account)
+    {
+        $this->service('SearchChangeHistoryEvents')->setTemplate($account);
 
         return $this->call();
     }

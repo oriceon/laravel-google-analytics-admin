@@ -12,6 +12,7 @@ class Client
 
     /** The default address of the service. */
     private const SERVICE_ADDRESS = 'analyticsadmin.googleapis.com';
+    private const SCHEME = 'https://';
 
     /** The default port of the service. */
     private const DEFAULT_SERVICE_PORT = 443;
@@ -30,15 +31,24 @@ class Client
         $this->token = $token;
     }
 
-    public function request(string $method, string $endpoint, ?array $params = null, ?object $body = null)
+    public function request(string $method, string $endpoint, ?array $params = null, ?string $body = null)
     {
-        $endpoint = self::SERVICE_ADDRESS.$endpoint;
+        $endpoint = self::SCHEME . self::SERVICE_ADDRESS . $endpoint;
+        print ($method . ': ' . $endpoint . '<br>');
         $http = Http::withToken($this->token)->accept('application/json');
         if($body) {
-            $http = $http->withBody($body);
+            $endpoint .= (isset($params) ? '?' . http_build_query($params) : '');
+            $response = $http->withBody($body)->{$method}($endpoint);
+        } else {
+            $response = $http->{$method}($endpoint, $params);
         }
-        $response = $http->{$method}($endpoint, $params);
 
+        return json_decode($response->body());
+    }
+
+    public function verify()
+    {
+        $response = Http::get(self::SCHEME . 'www.googleapis.com/oauth2/v1/tokeninfo', ['access_token' => $this->token]);
         return json_decode($response->body());
     }
 
