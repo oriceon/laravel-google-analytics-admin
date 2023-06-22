@@ -52,8 +52,8 @@ Update Account
 Account name e.g.: 'accounts/100'
 Fields updatable: 'displayName', 'regionCode'
 ```php
-$param = ['displayName' => 'New Name', 'regionCode' => 'DE'];
-$account = $analytics->updateAccount($account);
+$params = ['displayName' => 'New Name', 'regionCode' => 'DE'];
+$account = $analytics->updateAccount($account, $params);
 ```
 
 Delete Account
@@ -109,13 +109,13 @@ Update Property
 Property name e.g.: 'properties/1000'
 Fields updatable: 'displayName', 'industryCategory', 'timeZone', 'currencyCode'
 ```php
-$param = [
+$params = [
     'displayName' => 'Update GA 4 property', 
     'industryCategory' => 'TECHNOLOGY', 
     'timeZone' => 'America/New_York', 
     'currencyCode' => 'USD'
 ];
-$property = $analytics->updateProperty($property);
+$property = $analytics->updateProperty($property, $params);
 ```
 
 Delete Property
