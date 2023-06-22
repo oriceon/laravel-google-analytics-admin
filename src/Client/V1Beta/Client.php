@@ -38,7 +38,7 @@ class Client
         $http = Http::withToken($this->token)->accept('application/json');
         if($body) {
             $endpoint .= (isset($params) ? '?' . http_build_query($params) : '');
-            $response = $http->withBody($body)->{$method}($endpoint);
+            $response = $http->withBody($body, 'application/json')->{$method}($endpoint);
         } else {
             $response = $http->{$method}($endpoint, $params);
         }
