@@ -61,8 +61,8 @@ trait DataStream
     */
     public function DeleteDataStream(string $dataStream)
     {
-        $this->service('DeleteDataStream');
-        $this->setUri($dataStream);
+        $this->service('DeleteDataStream')
+            ->setUri($dataStream);
 
         return $this->call();
     }

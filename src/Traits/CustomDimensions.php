@@ -61,8 +61,8 @@ trait CustomDimensions
     */
     public function archiveCustomDimension(string $dimension)
     {
-        $this->service('ArchiveCustomDimension');
-        $this->setUri($dimension);
+        $this->service('ArchiveCustomDimension')
+            ->setUri($dimension);
 
         return $this->call();
     }

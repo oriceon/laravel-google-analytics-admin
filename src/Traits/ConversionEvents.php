@@ -46,8 +46,8 @@ trait ConversionEvents
     */
     public function deleteConversionEvent(string $property)
     {
-        $this->service('DeleteConversionEvent');
-        $this->setUri($property);
+        $this->service('DeleteConversionEvent')
+            ->setUri($property);
 
         return $this->call();
     }

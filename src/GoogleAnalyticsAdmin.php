@@ -55,6 +55,7 @@ class GoogleAnalyticsAdmin
     protected function setUri($template)
     {
         $this->interface['uriTemplate'] = preg_replace('/(\{.*\})/', $template, $this->interface['uriTemplate']);
+
         return $this;
     }
 
@@ -69,13 +70,13 @@ class GoogleAnalyticsAdmin
             $this->interface['params'] = $params;
         }
 
-
         return $this;
     }
 
     protected function queryBody(array $params)
     {
         $this->interface['rawBody'] = json_encode($params);
+
         return $this;
     }
 

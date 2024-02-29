@@ -61,8 +61,8 @@ trait CustomMetrics
     */
     public function archiveCustomMetric(string $property)
     {
-        $this->service('ArchiveCustomMetric');
-        $this->setUri($property);
+        $this->service('ArchiveCustomMetric')
+            ->setUri($property);
 
         return $this->call();
     }

@@ -60,8 +60,8 @@ trait Properties
     */
     public function deleteProperty(string $property)
     {
-        $this->service('DeleteProperty');
-        $this->setUri($property);
+        $this->service('DeleteProperty')
+            ->setUri($property);
 
         return $this->call();
     }
@@ -72,8 +72,9 @@ trait Properties
     public function runPropertiesAccessReport(string $property, array $dateRange)
     {
         $accessDateRange = json_encode($dateRange);
-        $this->service('RunAccessReport')->setUri($property);
-        $this->queryParams($dateRange);
+        $this->service('RunAccessReport')
+            ->setUri($property)
+            ->queryParams($dateRange);
 
         return $this->call();
     }
@@ -83,7 +84,8 @@ trait Properties
     */
     public function getDataRetentionSettings(string $property): object
     {
-        $this->service('GetDataRetentionSettings')->setUri($property);
+        $this->service('GetDataRetentionSettings')
+            ->setUri($property);
 
         return $this->call();
     }
@@ -108,7 +110,8 @@ trait Properties
     */
     public function acknowledgeUserDataCollection(string $property): object
     {
-        $this->service('UpdateDataRetentionSettings')->setUri($property);
+        $this->service('UpdateDataRetentionSettings')
+            ->setUri($property);
 
         return $this->call();
     }

@@ -61,8 +61,8 @@ trait MeasurementProtocolSecrets
     */
     public function deleteMeasurementProtocolSecret(string $measurementProtocolSecret)
     {
-        $this->service('DeleteMeasurementProtocolSecret');
-        $this->setUri($measurementProtocolSecret);
+        $this->service('DeleteMeasurementProtocolSecret')
+            ->setUri($measurementProtocolSecret);
 
         return $this->call();
     }

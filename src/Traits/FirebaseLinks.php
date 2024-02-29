@@ -35,8 +35,8 @@ trait FirebaseLinks
     */
     public function deleteFirebaseLink(string $firebaseLink)
     {
-        $this->service('DeleteFirebaseLink');
-        $this->setUri($firebaseLink);
+        $this->service('DeleteFirebaseLink')
+            ->setUri($firebaseLink);
 
         return $this->call();
     }

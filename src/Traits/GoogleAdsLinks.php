@@ -50,8 +50,8 @@ trait GoogleAdsLinks
     */
     public function deleteGoogleAdsLink(string $googleAdsLink)
     {
-        $this->service('DeleteGoogleAdsLink');
-        $this->setUri($googleAdsLink);
+        $this->service('DeleteGoogleAdsLink')
+            ->setUri($googleAdsLink);
 
         return $this->call();
     }
