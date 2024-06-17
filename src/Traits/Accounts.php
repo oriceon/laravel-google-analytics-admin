@@ -4,14 +4,16 @@ namespace Tda\LaravelGoogleAnalyticsAdmin\Traits;
 
 trait Accounts
 {
-
-
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/list
     */
-    public function listAccounts(): object
+    public function listAccounts(int $perPage = 200, ?string $pageToken = null): object
     {
-        $this->service('ListAccounts');
+        $this->service('ListAccounts')
+            ->queryParams([
+                'pageSize'  => $perPage,
+                'pageToken' => $pageToken,
+            ]);
 
         return $this->call();
     }
@@ -19,9 +21,12 @@ trait Accounts
     /*
     * https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/accounts/get
     */
-    public function listAccountSummaries(): object
+    public function listAccountSummaries(int $perPage = 200, ?string $pageToken = null): object
     {
-        $this->service('ListAccountSummaries');
+        $this->service('ListAccountSummaries')->queryParams([
+            'pageSize'  => $perPage,
+            'pageToken' => $pageToken,
+        ]);
 
         return $this->call();
     }
@@ -32,7 +37,6 @@ trait Accounts
     public function provisionAccountTicket(): string
     {
         $this->service('ProvisionAccountTicket');
-
         return $this->call();
     }
 
@@ -66,8 +70,7 @@ trait Accounts
     */
     public function deleteAccount(string $account)
     {
-        $this->service('DeleteAccount')
-            ->setUri($account);
+        $this->service('DeleteAccount')->setUri($account);
 
         return $this->call();
     }
@@ -77,8 +80,7 @@ trait Accounts
     */
     public function getDataSharingSettings(string $account)
     {
-        $this->service('GetDataSharingSettings')
-            ->setUri($account . '/dataSharingSettings');
+        $this->service('GetDataSharingSettings')->setUri($account . '/dataSharingSettings');
 
         return $this->call();
     }
@@ -89,9 +91,8 @@ trait Accounts
     public function runAccountsAccessReport(string $account, array $dateRange)
     {
         $accessDateRange = json_encode($dateRange);
-        $this->service('RunAccessReport')
-            ->setUri($account)
-            ->queryParams($dateRange);
+        $this->service('RunAccessReport')->setUri($account);
+        $this->queryParams($dateRange);
 
         return $this->call();
     }
@@ -101,8 +102,7 @@ trait Accounts
     */
     public function searchChangeHistoryEvents(string $account)
     {
-        $this->service('SearchChangeHistoryEvents')
-            ->setUri($account);
+        $this->service('SearchChangeHistoryEvents')->setUri($account);
 
         return $this->call();
     }
